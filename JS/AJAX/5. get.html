@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list"}></ul>
+<script>
+    var listElement = document.getElementById("list");
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/posts");
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4) {
+           var data = JSON.parse(this.responseText);
+
+           for (var i = 0; i < data.length; i ++) {
+               var liElement = document.createElement("li");
+               liElement.innerHTML = data[i].title;
+               liElement.id = data[i].id;
+
+               listElement.appendChild(liElement);
+
+               liElement.addEventListener("click", function () {
+                   var xhr1 = new XMLHttpRequest();
+
+                   xhr1.open("GET", `https://jsonplaceholder.typicode.com/posts/${this.id}`);
+                   xhr1.send();
+
+                   xhr1.onreadystatechange = function () {
+                       if (this.readyState === 4) {
+                           var obj = JSON.parse(this.responseText);
+                        console.log(obj);
+                       }
+                   }
+               })
+           }
+        }
+    }
+
+</script>
+</body>
+</html>

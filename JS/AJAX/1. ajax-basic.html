@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+    xhr.send();
+    // 客户端永远不知道服务端何时才能返回我们需要的响应
+    //so AJAX API 采用事件的机制（通知的感觉）
+    xhr.onreadystatechange = function () {
+        //这个事件并不是只在响应时出发，XHR状态改变就触发
+        if (this.readyState !== 4) return;
+        console.log(this.responseText);
+    }
+
+</script>
+</body>
+</html>

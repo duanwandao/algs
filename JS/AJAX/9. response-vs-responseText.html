@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "note.xml");
+    xhr.send(null);
+
+    // 我们通过代码告诉请求代理对象，服务端响应给我们的是json
+    xhr.responseType = 'json';
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4)  return;
+
+        //response 获取到的结果会根据this.responseType的变化而变化
+        //responseText 永远获取的是字符串形式的响应体
+        console.log(this.response);
+        console.log(this.responseText);
+    }
+</script>
+</body>
+</html>

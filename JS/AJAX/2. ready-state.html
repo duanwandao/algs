@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var xhr = new XMLHttpRequest();
+    console.log(xhr.readyState);  //0, UNSENT 初始化 请求代理对象
+
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+    console.log(xhr.readyState);  //1, OPENED open方法已经调用，建立与服务端xxx端口的连接
+
+    xhr.send();
+
+    xhr.addEventListener("readystatechange", function () {
+        switch(this.readyState) {
+            case 2:
+                console.log(this.readyState); //2, HEADERS_RECEIVED 已经接受到了响应报文的响应头
+                //可以拿到头，但不能拿到体
+                console.log(this.getAllResponseHeaders());
+                console.log(this.getResponseHeader("content-type"));
+                break;
+            case 3:
+                //3， LOADING, 正在下载响应报文的响应体，有可能响应体为空，也有可能不完整
+                // 在这里处理响应体不可靠
+                console.log(this.readyState);
+                break;
+            case 4:
+                // 4. DONE 整个响应报文已经完整下载下来了
+                console.log(this.readyState);
+                break;
+        }
+    })
+</script>
+</body>
+</html>

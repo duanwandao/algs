@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "note.xml");
+    xhr.send(null);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState !== 4)  return;
+
+        // this.responseXML 是专门用于获取服务端返回的xml数据
+        // 操作方式就是通过DOM的方式操作
+        // 但是需要服务端响应头的Content-Type必须是 application/xml
+        console.log(this.responseXML.documentElement);
+    }
+</script>
+</body>
+</html>

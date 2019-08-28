@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var xhr = new XMLHttpRequest();
+
+    // 第三个参数是async，可以传入一个boolean，默认为true
+    // false 已经deprecated了，会有warning，但还能用
+    xhr.open("GET", "xxx", true);
+    xhr.send();
+</script>
+</body>
+</html>

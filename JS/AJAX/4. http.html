@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xhr = new XMLHttpRequest();
+
+    // 设置请求行 request line
+    xhr.open("POST", "XXXX");
+
+    // 一旦请求体request payload是 urlencoded格式的内容，一定要设置请求头中 content-type "application/x-www-form-urlencoded"
+//    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//
+//    xhr.send("key1=value1&key2=value2");
+
+    // 因为request payload 格式是json，请求头要设置"content-type", "application/json"
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send('{"foo" : "123"}');
+</script>
+</body>
+</html>

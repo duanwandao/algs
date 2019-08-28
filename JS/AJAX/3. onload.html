@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+    xhr.send(null);
+
+    // onload是HTML5 中提供的XMLHttpRequest v2.0定义的
+    xhr.onload = function() {
+        console.log(this.readyState);       // 4
+        console.log(this.responseText);
+    }
+</script>
+</body>
+</html>
