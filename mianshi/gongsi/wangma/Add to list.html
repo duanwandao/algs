@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add to list</title>
+    <style>
+        li {
+            list-style: none;
+            border-width: 1px 0px 1px 1px;
+            border-style: solid;
+            border-color: #ccc;
+            line-height: 30px;
+            border-radius: 0px 15px 15px 0px;
+        }
+        li:hover {
+            background-color: grey;
+        }
+        li a {
+            float: right;
+            background-color: red;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 0px 15px 15px 0px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+
+    </ul>
+    <input placeholder="Add to list" type="text">
+    <button>submit</button>
+
+<script>
+    var btn = document.querySelector("button");
+    var text = document.querySelector("input");
+    var ul = document.querySelector("ul");
+
+    btn.onclick = function () {
+        if (text.value === "") {
+            return;
+        }
+        var li = document.createElement("li");
+        li.innerHTML = text.value + "<a href='javacript:;'>X</a>";
+        ul.appendChild(li);
+        //ul.insertBefore(li, ul.children[0]);
+        text.value = "";
+
+        var as = document.querySelectorAll("a");
+        for (var i = 0; i < as.length; i ++) {
+            as[i].onclick = function () {
+                ul.removeChild(this.parentNode);
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
