@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tab {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tab_list ul {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .tab_list li {
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .tab_list .current {
+            background-color: red;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 0 20px;
+        }
+
+        .item {
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div class="tab"}>
+        <div class="tab_list"}>
+            <ul>
+                <li class="current">Intro</li>
+                <li>Size</li>
+                <li>Warranty</li>
+                <li>Comment</li>
+                <li>Community</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">Intro content</div>
+            <div class="item">Size content</div>
+            <div class="item">Warranty content</div>
+            <div class="item">Comment content</div>
+            <div class="item">Community content</div>
+        </div>
+    </div>
+
+    <script>
+        var tabList = document.querySelector(".tab_list");
+        var lis = tabList.querySelectorAll("li");
+        var items = document.querySelectorAll(".item");
+
+        for (var i = 0; i < lis.length; i ++) {
+            //给li设定index
+            lis[i].setAttribute("data-index", i);
+
+            lis[i].onclick = function () {
+                //干掉所有人
+                for (var i = 0; i < lis.length; i ++) {
+                    lis[i].className = "";
+                }
+                // 留下我自己
+                this.className = "current";
+
+                // 显示内容模块
+                var index = this.getAttribute("data-index");
+                for (var i = 0; i < items.length; i ++) {
+                    items[i].style.display = "none";
+                }
+                items[index].style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

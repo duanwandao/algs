@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        td,th {
+            border: 1px solid #333;
+        }
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Score</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+
+    <script>
+        var data = [
+            {
+                name: "Jack",
+                subject: "Java",
+                score: 59
+            },
+            {
+                name: "Josh",
+                subject: "JavaScript",
+                score: 100
+            },
+            {
+                name: "Jason",
+                subject: "C#",
+                score: 0
+            }
+        ];
+
+
+        var tbody = document.querySelector("tbody");
+
+        for (var i = 0; i < data.length; i ++) {
+            // create row
+            var tr = document.createElement("tr");
+            tbody.appendChild(tr);
+
+
+            for (var key in data[i]) {
+                // create cell
+                var td = document.createElement("td");
+                td.innerHTML = data[i][key];
+                tr.appendChild(td);
+            }
+
+            var td = document.createElement("td");
+            td.innerHTML = "<a href='javascript:;'>Delete</a>"
+            tr.appendChild(td);
+        }
+
+        var a = document.querySelectorAll("a");
+
+
+        for (var i = 0; i < a.length; i ++) {
+            a[i].onclick = function () {
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

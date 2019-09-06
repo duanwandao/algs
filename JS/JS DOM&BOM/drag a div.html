@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector(".box");
+
+        box.addEventListener("mousedown", function (e) {
+            // 8. 鼠标按下，获得鼠标在box里的位置。
+            var x = e.pageX - this.offsetLeft;
+            var y = e.pageY - this.offsetTop;
+
+            // move函数，box坐标 = 鼠标坐标 - 鼠标在box里的坐标
+            function move(e) {
+                box.style.left = e.pageX - x + "px";
+                box.style.top = e.pageY - y + "px";
+            }
+
+            document.addEventListener("mousemove", move);
+
+            document.addEventListener("mouseup", function () {
+                document.removeEventListener("mousemove", move)
+            })
+        })
+    </script>
+</body>
+</html>

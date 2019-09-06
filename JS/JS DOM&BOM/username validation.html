@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .right {
+            color: green;
+        }
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<input type="text"><span></span>
+
+<script>
+    var uname = document.querySelector("input");
+    var span = document.querySelector("span");
+
+    var reg = /^[a-zA-Z0-9-_]{6,10}$/;
+
+    uname.addEventListener("blur", function () {
+        if (reg.test(this.value)) {
+            span.className = "right";
+            span.innerHTML = "user name is correct";
+        } else {
+            span.className = "wrong";
+            span.innerHTML = "user name is wrong";
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="j_cbAll"}></th>
+                    <th>Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb"}>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>iPhone X</td>
+                    <td>8,000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>iPad</td>
+                    <td>4,000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Macbook Pro</td>
+                    <td>20,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var j_cbAll = document.getElementById("j_cbAll");
+        var j_tbs = document.getElementById("j_tb").getElementsByTagName("input");
+
+        j_cbAll.onclick = function () {
+            for (var i = 0; i < j_tbs.length; i ++) {
+                j_tbs[i].checked = this.checked;
+            }
+        }
+
+        for (var i = 0; i < j_tbs.length; i ++) {
+            j_tbs[i].onclick = function () {
+                // flag is to control j_cbAll
+                var flag = true;
+                for (var i = 0; i < j_tbs.length; i ++) {
+                    if (!j_tbs[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                j_cbAll.checked = flag;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .search {
+            width: 1000px;
+            margin: 50px auto;
+        }
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="search">
+        Search by price: <input type="text" class="start"> - <input type="text" class="end"}>
+        <button class="search-price">search</button> Search by name: <input type="text" class="input-name">
+        <button class="search-name"}>find</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+    <script>
+        var products = [
+            {
+                id: 1,
+                pname: "iphone",
+                price: 10000
+            },
+            {
+                id: 2,
+                pname: "galaxy",
+                price: 8000
+            },
+            {
+                id: 3,
+                pname: "huawei",
+                price: 5000
+            }
+        ];
+
+        var tbody = document.querySelector("tbody");
+        var searchPrice = document.querySelector(".search-price");
+        var start = document.querySelector(".start");
+        var end = document.querySelector(".end");
+        var inputName = document.querySelector(".input-name");
+        var searchName = document.querySelector(".search-name");
+
+        function setProducts(products) {
+            tbody.innerHTML = "";
+            products.forEach(function(product) {
+                var tr = document.createElement("tr");
+                for (let key in product) {
+                    var td = document.createElement("td");
+                    td.innerText = product[key];
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            })
+        }
+
+        setProducts(products);
+
+        searchPrice.addEventListener("click", function() {
+           var newProducts = products.filter(function(product) {
+                return product.price >= start.value && product.price <= end.value;
+            });
+            setProducts(newProducts);
+        });
+
+        searchName.addEventListener("click", function () {
+            var arr = [];
+            products.some(function(product) {
+                if (product.pname === inputName.value) {
+                    arr.push(product);
+                    return true;
+                }
+            });
+
+            setProducts(arr);
+        });
+
+
+    </script>
+</body>
+</html>
