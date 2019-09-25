@@ -25,7 +25,7 @@ const serialize = (root) => {
   }
 
   return res;
-}
+};
 
 
 // data [1,2,3,null,null,4,5]

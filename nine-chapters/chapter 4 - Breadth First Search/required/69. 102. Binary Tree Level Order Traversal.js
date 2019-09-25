@@ -25,5 +25,4 @@ const levelOrder = function (root) {
     res.push(level);
   }
   return res;
-}
-
+};
