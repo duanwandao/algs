@@ -1,12 +1,13 @@
 
 
 
-const isBalanced = function (root) {
+const isBalanced = function(root) {
   return maxDepth(root) !== -1;
-}
+};
 
 const maxDepth = (root) => {
   const NOT_BALENCED = -1;
+
   if (!root) {
     return 0;
   }
@@ -20,4 +21,4 @@ const maxDepth = (root) => {
     return NOT_BALENCED;
   }
   return Math.max(left, right) + 1;
-}
+};

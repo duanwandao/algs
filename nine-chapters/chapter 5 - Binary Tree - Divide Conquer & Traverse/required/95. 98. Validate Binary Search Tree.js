@@ -1,14 +1,11 @@
-//   const isValidBST = (node, min = null, max = null) => {
-//     if (!node) return true;
-//     if (min !== null && node.val <= min) return false;
-//     if (max !== null && node.val >= max) return false;
-//     return isValidBST(node.left, min, node.val) && isValidBST(node.right, node.val, max);
-//   }
+const isValidBST1 = (node, min = null, max = null) => {
+  if (!node) return true;
+  if (min !== null && node.val <= min) return false;
+  if (max !== null && node.val >= max) return false;
+  return isValidBST(node.left, min, node.val) && isValidBST(node.right, node.val, max);
+};
 
-
-
-
-const isValidBST = (root) => {
+const isValidBST2 = (root) => {
   let curr = null;
   let isValid = true;
 
@@ -23,15 +20,15 @@ const isValidBST = (root) => {
     }
     curr = root;
     inorder(root.right);
-  }
+  };
   inorder(root);
 
   return isValid;
-}
+};
 
 
 //iteration, 模板
-const isValidBST = (root) => {
+const isValidBST3 = (root) => {
   if (!root) {
     return true;
   }
@@ -59,4 +56,5 @@ const isValidBST = (root) => {
     }
   }
   return true;
-}
+};
+

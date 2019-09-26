@@ -1,4 +1,3 @@
-
 // recursive helper function
 var inorderTraversal = function(root) {
   const res = [];
@@ -11,7 +10,7 @@ const traverse = (root, res) => {
   if (root.left) traverse(root.left, res);
   res.push(root.val);
   if (root.right) traverse(root.right, res);
-}
+};
 
 // recursive res as an argument
 // var inorderTraversal = function(root, res = []) {
@@ -51,4 +50,5 @@ const inorderTraversal = (root) => {
     }
   }
   return res;
-}
+};
+
