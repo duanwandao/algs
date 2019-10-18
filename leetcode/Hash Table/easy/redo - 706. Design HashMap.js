@@ -1,4 +1,4 @@
-
+// using linked list
 class ListNode {
   constructor(key, val) {
     this.key = key;
@@ -47,14 +47,23 @@ MyHashMap.prototype.findPrevNode = function(key) {
   return null;
 };
 
-/**
- * Your MyHashMap object will be instantiated and called as such:
- * var obj = new MyHashMap()
- * obj.put(key,value)
- * var param_2 = obj.get(key)
- * obj.remove(key)
- */
+// using array
+const MyHashMap2 = function() {
+  this.storage = [];
+};
 
+MyHashMap.prototype.put = function(key, value) {
+  this.storage[key] = value;
 
+};
 
+MyHashMap.prototype.get = function(key) {
+  if (this.storage[key] !== undefined) {
+    return this.storage[key];
+  }
+  return -1;
+};
 
+MyHashMap.prototype.remove = function(key) {
+  delete this.storage[key];
+};
