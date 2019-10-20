@@ -5,7 +5,7 @@
 // Input: s = "anagram", t = "nagaram"
 // Output: true
 
-var isAnagram = function(s, t) {
+var isAnagram1 = function(s, t) {
     if (s.length !== t.length) {
         return false;
     }
@@ -15,11 +15,10 @@ var isAnagram = function(s, t) {
         map[s[i]] = (map[s[i]] || 0) + 1;
         map[t[i]] = (map[t[i]] || 0) - 1;
     }
+    
+    return Object.values(map).every(count => count === 0);
+};
 
-    for (let key in map) {
-        if (map[key] !== 0) {
-            return false;
-        }
-    }
-    return true;
+var isAnagram2 = function(s, t) {
+    return s.split("").sort().join("") === t.split("").sort().join("")
 };
